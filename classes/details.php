@@ -124,7 +124,59 @@
       }
     }
 
-  
+    public function settingChanges($form_post){
+      // switch statement for submit the changes in setting
+      $obj = new base_class;
+      switch($form_post){
+        case 'change_image':{
+          if(isset($_POST['change_image'])){
+            $img_name   = $_FILES['images']['name'];
+            $img_name   = uniqid(). basename($img_name);
+            $img_tmp    = $_FILES['images']['tmp_name'];  
+            $img_path   = "assets/images";
+            $imageFileType = pathinfo($img_name, PATHINFO_EXTENSION);
+
+            $image_status = 1;
+             // image validation
+                if(empty($img_name)){
+                  $obj->Create_Session("image_error","Image is requried");
+                  $image_status = "";
+                }
+                elseif(strtolower($imageFileType) != "jpeg" && strtolower($imageFileType) != "png" && strtolower($imageFileType) != "jpg") {
+                  $obj->Create_Session("image_error","Sorry, only jpeg, jpg and png files are allowed");
+                  $image_status = "";
+                }
+                elseif($_FILES['images']['size'] > 2097152){
+                  $obj->Create_Session("image_error","Sorry your file is too large limit is 2MB");
+                  $image_status = "";
+                }
+                // check if image status != empty than submit form
+                if(!empty($image_status)){
+
+                  move_uploaded_file($img_tmp, "$img_path/$img_name");
+
+                  if($obj->Normal_Query("UPDATE byshare_profile_details SET byshare_profile_details_profile_pic = ? WHERE byshare_profile_details_username = ? ",[$img_name, $this->getUsername()])){
+                  
+                  header('location:setting.php');
+                  }
+                }
+          }
+          
+        break;
+        }
+        case 'setting_changes':{
+          echo 'its working on setting';
+        break;
+        }
+        case 'setting_password':{
+          echo 'its working on password';
+        break;
+        }
+        default:{
+          exit("unauthorized : 404");
+        }
+      }
+    }
 
 
   }

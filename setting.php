@@ -40,7 +40,6 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
       <!-- side-bar include end -->
 
     <section id="chat-area">
-
       <!-- setting-form include -->
       <?php include 'component/setting-form.php'; ?>
       <!-- setting-form include end-->
