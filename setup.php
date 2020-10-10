@@ -130,7 +130,7 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
     // check the status is empty or not
     if(!empty($fname_status) && !empty($lname_status) && !empty($phone_num_status) && !empty($country_name_status) && !empty($dob_status) && !empty($skills_status) && !empty($gender_status) && !empty($details_status) && !empty($image_status)){
 
-      echo $username = $obj->concatUsername($fname,$lname);
+       $username = $obj->concatUsername($fname,$lname);
         
         move_uploaded_file($img_tmp, "$img_path/$img_name");
 
