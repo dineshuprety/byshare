@@ -4,20 +4,21 @@
 
       protected $con;
 
-      public function getUsername(){
+    public function getUsername(){
         $userLoggedIn = $_SESSION['byshare_username'];
         return $userLoggedIn;
       }
 
-      public function getFirstNameLastName(){
-      $id = $_SESSION['byshare_user_id'];
-      $query = $this->con->prepare("SELECT byshare_profile_details_fname,byshare_profile_details_lname FROM byshare_profile_details WHERE byshare_id = ?");
-      $query->execute([$id]);
-      $row = $query->fetch(PDO::FETCH_ASSOC);
-      $firstname = $row['byshare_profile_details_fname'];
-      $lastname  = $row['byshare_profile_details_lname'];
-      $name = $firstname." ".$lastname;
-      return $name;
+      
+    public function getFirstNameLastName(){
+        $id = $_SESSION['byshare_user_id'];
+        $query = $this->con->prepare("SELECT byshare_profile_details_fname,byshare_profile_details_lname FROM byshare_profile_details WHERE byshare_id = ?");
+        $query->execute([$id]);
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        $firstname = $row['byshare_profile_details_fname'];
+        $lastname  = $row['byshare_profile_details_lname'];
+        $name = $firstname." ".$lastname;
+        return $name;
 
     }
     public function getProfilePic(){
