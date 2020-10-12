@@ -36,13 +36,18 @@
 
     <section id="chat-area">
     <?php
-    $pswd = "supersecret";
-    $pswd2 = "supersecreT";
-    if (strcmp($pswd, $pswd2) != 0) {
-        echo "Passwords do not match!";
-    } else {
-        echo "Passwords match!";
-    }
+    // $pswd = "supersecret";
+    // $pswd2 = "supersecreT";
+    // if (strcmp($pswd, $pswd2) != 0) {
+    //     echo "Passwords do not match!";
+    // } else {
+    //     echo "Passwords match!";
+    // }
+    // $password = password_hash('dinesh',PASSWORD_DEFAULT);
+    // echo $password;
+
+    
+
 ?>
       
     </section><!-- close chat-area -->

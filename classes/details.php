@@ -165,12 +165,124 @@
           
         break;
         }
+
         case 'setting_changes':{
-          echo 'its working on setting';
+          if(isset($_POST['setting_changes'])){
+                  $fname      = $obj->security($_POST['fname']);
+                  $fname      = ucfirst(strtolower($fname));//uppercase first letter
+                  $lname      = $obj->security($_POST['lname']);
+                  $lname      = ucfirst(strtolower($lname));//uppercase first letter
+                  $phone_num  = $obj->security($_POST['phone']);
+                  $country_name = $obj->security($_POST['country']);
+                  $dob        = $obj->security($_POST['date']);
+                  $skills     = $obj->security($_POST['skills']);
+                  $gender     = $obj->security($_POST['gender']);
+                  $detail    = trim($_POST['details']);//remove html tag
+                  $byshare_user_id = $_SESSION['byshare_user_id']; // storeing user id in var form session
+
+                  $fname_status = $lname_status = $phone_num_status = $dob_status =  $details_status = 1;
+
+
+                  // form values validation
+
+                  //fname validation
+                  if(empty($fname)){
+                    $obj->Create_Session('fname_error','Fname is requried');
+                    $fname_status = "";
+                  }elseif(strlen($fname) > 30 || strlen($fname) < 3){
+                    $obj->Create_Session('fname_error','Your first name must be between 5 and 30 characters');
+                    $fname_status = "";
+                  }
+
+                  //lname validation
+                  if(empty($lname)){
+                    $obj->Create_Session('lname_error','Fname is requried');
+                    $lname_status = "";
+                  }elseif(strlen($lname) > 30 || strlen($lname) < 3){
+                    $obj->Create_Session('lname_error','Your Last name must be between 5 and 30 characters');
+                    $lname_status = "";
+                  }
+
+                  // phone number validation
+
+                  if(empty($phone_num)){
+                    $obj->Create_Session('phone_num_error','Fname is requried');
+                    $phone_num_status = "";
+                  }
+
+                  // dob validation
+                  if(empty($dob)){
+                    $obj->Create_Session('dob_error','Date of birth is requried');
+                    $dob_status = "";
+                  }
+
+                  // details validation
+                  if(empty($detail)){
+                    $obj->Create_Session('details_error','Filed is requried');
+                    $details_status = "";
+                  }elseif(strlen($detail) < 20){
+                    $obj->Create_Session('details_error','Details must be more then 20 characters');
+                    $details_status = "";
+                  }
+                  
+                  // check the status is empty or not
+                  if(!empty($fname_status) && !empty($lname_status) && !empty($phone_num_status) && !empty($dob_status) && !empty($details_status)){
+                   
+                     if($obj->Normal_Query("UPDATE byshare_profile_details SET byshare_profile_details_fname = ?,byshare_profile_details_lname = ?, byshare_profile_details_dob = ?, byshare_profile_details_skill = ?, byshare_profile_details_phone_num = ?, byshare_profile_details_country = ?, byshare_profile_details_gender = ?, byshare_profile_details_your_info= ? WHERE byshare_id = ?",[$fname, $lname, $dob, $skills, $phone_num, $country_name, $gender, $detail , $byshare_user_id])){
+                       header('location:setting.php');
+                     }
+
+                  }
+          }
+
         break;
         }
+
         case 'setting_password':{
-          echo 'its working on password';
+          if(isset($_POST['setting_password'])){
+            $oldpassword =  $obj->security(strtolower($_POST['oldpassword']));
+            $newpassword =  $obj->security(strtolower($_POST['newpassword']));
+            $newpassword1 = $obj->security(strtolower($_POST['newpassword1']));
+
+               $password_status  = 1;  
+
+                $obj->Normal_Query("SELECT byshare_password FROM byshare_users WHERE byshare_id = ?",[$_SESSION['byshare_user_id']]);
+                  $row = $obj->Single_Result();
+                  $db_password = $row->byshare_password;
+
+              if(empty($oldpassword)){
+                $obj->Create_Session('oldpassword_error',"Flied is requried");
+                $password_status = "";
+              }
+              elseif(!password_verify($oldpassword, $db_password)){
+                $obj->Create_Session('oldpassword_error',"Old password not match");
+                $password_status = "";
+              }
+              if(empty($newpassword && $newpassword1)){
+                $obj->Create_Session('password_error',"Flied is requried");
+                $password_status = "";
+              }
+               elseif(strcmp($newpassword, $newpassword1) != 0 ){
+                  $obj->Create_Session('password_error',"Password do not match!");
+                  $password_status = "";
+            }else {
+              if(preg_match('/[^A-Za-z0-9]/', $newpassword1)) {
+                $obj->Create_Session('password_error',"Your password can only contain english characters and numbers");
+                $password_status = "";
+              }
+            }
+              if(strlen($newpassword1) > 20 || strlen($newpassword1) < 5){
+                $obj->Create_Session('password_error', "Your password must be between 5 and 20 characters");
+                $password_status = "";
+              }
+
+              if(!empty($password_status)){
+                if($obj->Normal_Query("UPDATE byshare_users SET byshare_password = ? WHERE byshare_id = ?",[password_hash($newpassword1,PASSWORD_DEFAULT),$_SESSION['byshare_user_id']])){
+                  header('location:setting.php');
+                }
+              }
+            
+          }
         break;
         }
         default:{

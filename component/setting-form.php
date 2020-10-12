@@ -45,14 +45,32 @@ if(isset($_POST['change_image'])){
     <!-- details update -->
     <div class="group">
             <input type="text" name="fname"  class="control" value="<?php echo htmlentities($fname); ?>" placeholder="Enter First Name"/>
+            <div class="name-error error">
+                <?php if(isset($_SESSION['fname_error'])): ?>
+                <?php echo $_SESSION['fname_error']; ?>
+                <?php endif; ?>
+                <?php unset($_SESSION['fname_error']); ?>
+            </div> 
           </div><!--close group-->
 
           <div class="group">
           <input type="text" name="lname" value="<?php  echo htmlentities($lname); ?>" class="control" placeholder="Enter Last Name"  >
+          <div class="name-error error">
+                <?php if(isset($_SESSION['lname_error'])): ?>
+                <?php echo $_SESSION['lname_error']; ?>
+                <?php endif; ?>
+                <?php unset($_SESSION['lname_error']); ?>
+            </div> 
           </div><!--close group-->
 
           <div class="group">
           <input type="tel" name="phone" value="<?php echo htmlentities($phone); ?>"  class="control" pattern="[0-9]{10}" placeholder="Phone Number"  >
+          <div class="name-error error">
+                <?php if(isset($_SESSION['phone_num_error'])): ?>
+                <?php echo $_SESSION['phone_num_error']; ?>
+                <?php endif; ?>
+                <?php unset($_SESSION['phone_num_error']); ?>
+            </div> 
           </div><!--close group-->
 
           <div class="group">
@@ -69,6 +87,12 @@ if(isset($_POST['change_image'])){
 
           <div class="group">
           <input type="date" name="date" value="<?php echo htmlentities($dob); ?>"   class="control" placeholder="Date of birth" >
+          <div class="name-error error">
+                <?php if(isset($_SESSION['dob_error'])): ?>
+                <?php echo $_SESSION['dob_error']; ?>
+                <?php endif; ?>
+                <?php unset($_SESSION['dob_error']); ?>
+            </div> 
           </div><!--close group-->
 
           <div class="group">
@@ -92,6 +116,12 @@ if(isset($_POST['change_image'])){
 
           <div class="group">
           <textarea type="text" name="details" rows="3" cols="2" class="control" placeholder="About your self"><?php echo htmlentities($detail); ?></textarea>
+          <div class="name-error error">
+                <?php if(isset($_SESSION['details_error'])): ?>
+                <?php echo $_SESSION['details_error']; ?>
+                <?php endif; ?>
+                <?php unset($_SESSION['details_error']); ?>
+            </div> 
           </div><!--close group-->
           
           <div class="group">
@@ -105,14 +135,26 @@ if(isset($_POST['change_image'])){
 
     <form action="" method="POST">
       <div class="group">
-          <input type="password" name="oldpassword"  class="control" placeholder="Old Password" >
+          <input type="password" name="oldpassword"  class="control" placeholder="Old Password" required>
+          <div class="name-error error">
+                <?php if(isset($_SESSION['oldpassword_error'])): ?>
+                <?php echo $_SESSION['oldpassword_error']; ?>
+                <?php endif; ?>
+                <?php unset($_SESSION['oldpassword_error']); ?>
+            </div> 
           </div><!--close group-->
 
           <div class="group">
-          <input type="password" name="newpassword"  class="control" placeholder="New Password" >
+          <input type="password" name="newpassword"  class="control" placeholder="New Password" required >
           </div><!--close group-->
           <div class="group">
-          <input type="password" name="newpassword1"  class="control" placeholder="Confirm Password" >
+          <input type="password" name="newpassword1"  class="control" placeholder="Confirm Password" required >
+          <div class="name-error error">
+                <?php if(isset($_SESSION['password_error'])): ?>
+                <?php echo $_SESSION['password_error']; ?>
+                <?php endif; ?>
+                <?php unset($_SESSION['password_error']); ?>
+            </div> 
           </div><!--close group-->
           <div class="group">
           <input type="submit" name="setting_password" class="btn update-btn" value="Update">
