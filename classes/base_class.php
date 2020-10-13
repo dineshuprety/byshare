@@ -43,6 +43,28 @@
     }
 
 
+    public function getRecentUser(){
+
+      $userLoggedIn = $_SESSION['byshare_username'];
+
+        if($this->Normal_Query("SELECT user_to, user_from FROM message WHERE user_to = ? OR user_from = ? ORDER BY msg_id DESC LIMIT 1",[$userLoggedIn, $userLoggedIn])){
+            if($this->Count_Rows() == 0){
+              return false;
+            }else{
+              $row       = $this->Single_Result();
+              $user_to   = $row->user_to;
+              $user_form = $row->user_from;
+
+              if($user_to != $userLoggedIn){
+                return $user_to;
+              }else{
+                return $user_form;
+              }
+            }
+        }
+
   }
+
+ }
 
 ?>

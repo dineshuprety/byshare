@@ -19,6 +19,22 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
                 </script>");
 }
 ?>
+<?php 
+
+    if(isset($_GET['u'])){
+      $user_to = $_GET['u'];
+      $obj->Create_Session('user_to',$user_to);
+    }
+    else{
+    echo $user_to = $obj->getRecentUser();
+      if($user_to == false){
+        $user_to = 'new';
+        $obj->Create_Session('user_to',$user_to);
+      }
+    }
+    
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

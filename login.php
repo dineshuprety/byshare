@@ -56,7 +56,7 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
               $byshare_username = $row->byshare_profile_details_username;
               $obj->Create_Session("byshare_username",$byshare_username);
 
-              header('location:message.php');
+              header("location:message.php");
             }
           }else{
             $password_error = "Please enter correct password";

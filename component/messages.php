@@ -1,3 +1,10 @@
+<?php 
+
+if($user_to == "new"){
+  echo 'new user';
+}
+
+?>
 <div class="messages">
 
 <div class="left-message common-margin">
