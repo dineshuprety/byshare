@@ -5,7 +5,8 @@
         </div><!-- close form-input -->
         <div class="form-input">
           <label for="upload-files" id="upload-lable" title="file uploads" ><i class="fa fa-paperclip fa-uploads" ></i><i class="fa fa-file-image-o fa-uploads"></i></label>
-          <input type="file" id="upload-files" class="files-upload">
+          <input type="file" id="upload-files" name="send_files" class="files-upload">
         </div><!-- close form-input -->
       </div><!-- close chat-container -->
+      <div class="files-error"></div>
 </form><!-- close chat-form -->

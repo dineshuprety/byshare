@@ -26,11 +26,12 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
       $obj->Create_Session('user_to',$user_to);
     }
     else{
-    echo $user_to = $obj->getRecentUser();
+      $user_to = $obj->getRecentUser();
       if($user_to == false){
         $user_to = 'new';
         $obj->Create_Session('user_to',$user_to);
       }
+      $obj->Create_Session('user_to',$user_to);
     }
     
 

@@ -21,6 +21,7 @@
       return trim(strip_tags(str_replace(' ','',$data)));
     }
     public function Create_Session($session_name, $session_value){
+      // session_regenerate_id();
       $_SESSION[$session_name] = $session_value;
       
     }
@@ -63,8 +64,9 @@
             }
         }
 
-  }
+    }
 
+    
  }
 
 ?>

@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+session_regenerate_id();
 date_default_timezone_set("Asia/Kathmandu");
 ob_start();//truns on output buffering
 
