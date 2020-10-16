@@ -21,10 +21,10 @@ if(isset($_FILES['send_files']['name'])){
 
   }
   else{
-
-      move_uploaded_file($tmp_name,"$store_files/$file_name");
+    
       $userLoggedIn = $_SESSION['byshare_username'];
       $user_to      = $_SESSION['user_to'];
+      move_uploaded_file($tmp_name,"$store_files/$file_name");
       
       if($obj->Normal_Query("INSERT INTO message (user_to, user_from, messages, msg_type, opened, viewed, deleted) VALUES (?, ?, ?, ?, ?, ?, ?) ",[$user_to, $userLoggedIn,$file_name,$fileType,'no','no','no'])){
         // json_encode encode data in json format

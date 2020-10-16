@@ -64,4 +64,22 @@ $(document).ready(function(){
     }
   });
 
+  //send emoji
+  $(".emoji-same").click(function(){
+    var emoji = $(this).attr('src');
+    $.ajax({
+      type: 'POST',
+      url : 'ajax/send_emoji.php',
+      data:{'send_emoji':emoji},
+      dataType:'JSON',
+      success:function(feedback){
+        if(feedback.status == "success"){
+          alert("emoji send");
+        }
+      }
+  })
+  });
+
+  
 });
+
