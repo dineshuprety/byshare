@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},2000);
+   
   // send messages into database
   $(".chat-form").keypress(function(e){
     if(e.keyCode == 13){
@@ -19,8 +21,9 @@ $(document).ready(function(){
           dataType : 'JSON',
           success : function(feedback){
             if(feedback.status == "success"){
-              $(".chat-form").trigger("reset");
-              console.log("message send");
+              $(".chat-form").trigger("reset"); 
+              show_messages();
+              $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},2000);
             }
           }
         });
@@ -57,7 +60,9 @@ $(document).ready(function(){
                 $(".files-error").removeClass("show-file-error");
               }, 5000)
           }else if(feedback.status == "success"){
-            console.log("file send");
+            show_messages();
+               $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},2000);
+              
           }
         }
       });
@@ -65,21 +70,42 @@ $(document).ready(function(){
   });
 
   //send emoji
-  $(".emoji-same").click(function(){
-    var emoji = $(this).attr('src');
-    $.ajax({
-      type: 'POST',
-      url : 'ajax/send_emoji.php',
-      data:{'send_emoji':emoji},
-      dataType:'JSON',
-      success:function(feedback){
-        if(feedback.status == "success"){
-          alert("emoji send");
-        }
-      }
-  })
-  });
+    $(".emoji-same").click(function(){
+        var emoji = $(this).attr('src');
+        $.ajax({
+          type: 'POST',
+          url : 'ajax/send_emoji.php',
+          data:{'send_emoji':emoji},
+          dataType:'JSON',
+          success:function(feedback){
+            if(feedback.status == "success"){
+             show_messages();
+               $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},2000);
+            }
+          }
+      })
+    });
 
+    setInterval(function(){
+      show_messages();
+    },3000);
   
 });
+// show messages from database
+
+function show_messages(){
+  var msg= true;
+  $.ajax({
+    type : 'GET',
+    url  : 'ajax/show_messages.php',
+    data : {'message': msg},
+    success : function(feedback){
+      // console.log(feedback);
+      $(".messages").html(feedback);
+      
+    }
+  });
+}
+show_messages();
+
 

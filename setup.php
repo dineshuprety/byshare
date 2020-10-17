@@ -132,11 +132,11 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
 
        $username = $obj->concatUsername($fname,$lname);
         
-        move_uploaded_file($img_tmp, "$img_path/$img_name");
-
         $obj->Create_Session("byshare_username",$username);
         
         if($obj->Normal_Query("INSERT INTO byshare_profile_details (byshare_id, byshare_profile_details_fname, byshare_profile_details_lname, 	byshare_profile_details_username, byshare_profile_details_profile_pic, byshare_profile_details_dob, byshare_profile_details_skill, byshare_profile_details_phone_num, byshare_profile_details_country, byshare_profile_details_member, byshare_profile_details_gender, byshare_profile_details_your_info) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",[$byshare_user_id, $fname, $lname, $username, $img_name, $dob, $skills, $phone_num, $country_name, $member, $gender, $detail])){
+          
+          move_uploaded_file($img_tmp, "$img_path/$img_name");
           // change status to 1
           $update_setup_page = 1;
           $obj->Normal_Query("UPDATE byshare_users SET byshare_setup_status = ? WHERE byshare_id = ?",[$update_setup_page, $byshare_user_id]);

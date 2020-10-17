@@ -471,6 +471,15 @@ body{
   position: relative;
   font-size: 1.2rem;
 }
+.left-files{
+  padding: 1rem;
+  width: auto;
+  background-color: var(--color-white);
+  margin-top: .3rem;
+  /* font-weight: 500; */
+  position: relative;
+  font-size: 1.2rem;
+}
 .left-msg::before{
   position: absolute;
   contain: "";
@@ -560,6 +569,23 @@ body{
   font-size: 1.8rem;
   margin-left: 3rem;
   color: var(--color-black);
+}
+.all-files{
+  text-decoration: none;
+  color: var(--color-green);
+}
+.files-common{
+  font-size: 5rem;
+  margin-right: 1rem;
+}
+.pdf{
+  color: red;
+}
+.file{
+  color:var(--color-black);
+}
+.word{
+  color: #209ef7;
 }
 ::-webkit-input-placeholder{
   font-family: "Poppins", sans-serif;

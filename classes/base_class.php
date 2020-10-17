@@ -30,17 +30,24 @@
     }
     
     public function concatUsername($firstname,$lastname){
-      //Generate username by concateting fname and lname
+      error_reporting(0);
       $i = 0;
       $usernames = strtolower($firstname."_".$lastname);
-      $this->Normal_Query("SELECT byshare_profile_details_username FROM byshare_profile_details WHERE byshare_profile_details_username = '$usernames'");
+      if($this->Normal_Query("SELECT byshare_profile_details_username FROM byshare_profile_details WHERE byshare_profile_details_username = '$usernames'")){
+       $row = $this->Single_Result();
+       $db_username = $row->byshare_profile_details_username;
       //if username exists add number to username
-      while($this->Count_Rows()!=0) {
+      if($usernames == $db_username){
+          while($this->Count_Rows()!=0) {
 
-        $usernamess = $usernames.'_'.$i++;
-        $this->Normal_Query("SELECT byshare_profile_details_username FROM byshare_profile_details WHERE byshare_profile_details_username = '$usernamess'");
+            $usernamess = $usernames.'_'.$i++;
+            $this->Normal_Query("SELECT byshare_profile_details_username FROM byshare_profile_details WHERE byshare_profile_details_username = '$usernamess'");
+          }
+          return $usernamess;
       }
-      return $usernamess;
+    }
+      return $usernames;
+      
     }
 
 
