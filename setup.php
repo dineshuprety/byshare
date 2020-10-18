@@ -142,6 +142,7 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
           $obj->Normal_Query("UPDATE byshare_users SET byshare_setup_status = ? WHERE byshare_id = ?",[$update_setup_page, $byshare_user_id]);
 
           header('location:message.php');
+          die();
         }
     }
 

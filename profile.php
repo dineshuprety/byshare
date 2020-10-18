@@ -10,6 +10,7 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
      
     }else{
       header('location:setup.php');
+      die();
     }
   }
   

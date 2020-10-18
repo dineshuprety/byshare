@@ -85,6 +85,7 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
                 if($obj->Normal_Query("INSERT INTO byshare_users (byshare_email, byshare_password, byshare_close_user, byshare_status, byshare_setup_status) VALUES (?,?,?,?,?)",[$email, password_hash($password, PASSWORD_DEFAULT), $close_user, $status, $setup_page])){
                   $obj->Create_Session("account_success", "You have successfully created your account");
                   header('location:login.php');
+                  die();
                 }
             }
     }

@@ -3,6 +3,7 @@ include 'init.php';
 $obj = new base_class;
 if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
       exit(header('refresh:1;message.php'));
+      die();
 }
 ?>
 <!DOCTYPE html>

@@ -49,6 +49,7 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
             }
             if($db_setup_status == 0){
               header('location:setup.php');
+              die();
             }else{
 
               $obj->Normal_Query("SELECT byshare_profile_details_username FROM byshare_profile_details WHERE byshare_id = ?",[$db_user_id]);
@@ -57,6 +58,7 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
               $obj->Create_Session("byshare_username",$byshare_username);
 
               header("location:message.php");
+              die();
             }
           }else{
             $password_error = "Please enter correct password";
