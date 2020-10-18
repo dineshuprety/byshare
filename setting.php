@@ -30,6 +30,19 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
 
 </head>
 <body>
+    <?php if(isset($_SESSION['settings_updates'])): ?>
+      <div class="flash success-flash">
+      <span class="remove" >&times;</span>
+      <div class="flash-heading">
+      <h3><span class="checked">&#10004;</span> You updated your Setting</h3>
+      </div>
+      <div class="flash-body">
+       <p><?php echo $_SESSION['settings_updates']; ?></p>
+      </div>
+    </div>
+    <?php endif; ?>
+    <?php unset($_SESSION['settings_updates']); ?>
+    
     <!-- nap -->
     <?php include 'component/nav.php'; ?>
     <!-- nap include end -->

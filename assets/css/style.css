@@ -587,6 +587,10 @@ body{
 .word{
   color: #209ef7;
 }
+.send-msg{
+  color: var(--color-green);
+  font-size: 1.7rem;
+}
 ::-webkit-input-placeholder{
   font-family: "Poppins", sans-serif;
   font-size: 1.2rem;
@@ -819,6 +823,53 @@ body{
   #ff5fa0 75%,
   #ffc55a 100%);
   color: var(--color-white);
+}
+/* === Flash message === */
+.flash {
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  width: 40rem;
+  height: auto;
+  background-color: var(--color-white);
+  padding: 1.5rem;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+  z-index: 999999;
+}
+.success-flash{
+  color: var(--color-green);
+}
+.flash-heading{
+  font-size: 1.3rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.checked{
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  border: 1px solid var(--color-green);
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+.flash-body p{
+  margin-top: 5px;
+  margin-left: 4rem;
+  font-size: 1.2rem;
+
+}
+.remove{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: silver;
+  font-weight: 500;
+}
+.remove:hover{
+  cursor: pointer;
 }
 /* === files error === */
 

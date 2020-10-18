@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-  $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},2000);
-   
   // send messages into database
   $(".chat-form").keypress(function(e){
     if(e.keyCode == 13){
@@ -21,7 +19,8 @@ $(document).ready(function(){
           dataType : 'JSON',
           success : function(feedback){
             if(feedback.status == "success"){
-              $(".chat-form").trigger("reset"); 
+              $(".chat-form").trigger("reset");
+
               show_messages();
               $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},2000);
             }
@@ -52,16 +51,19 @@ $(document).ready(function(){
               setTimeout(function(){
                 $(".files-error").removeClass("show-file-error");
               }, 5000)
-          }else if(feedback.status == "error_size"){
+          }
+          else if(feedback.status == "error_size"){
             console.log(" working error");
               $(".files-error").addClass("show-file-error");
               $(".files-error").html("<span class='files-cross-icon' >&#x2715;</span>sorry size must be less than 2mb");
               setTimeout(function(){
                 $(".files-error").removeClass("show-file-error");
               }, 5000)
-          }else if(feedback.status == "success"){
+          }
+          else if(feedback.status == "success"){
+
             show_messages();
-               $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},2000);
+            $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},2000);
               
           }
         }
@@ -80,17 +82,16 @@ $(document).ready(function(){
           success:function(feedback){
             if(feedback.status == "success"){
              show_messages();
-               $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},2000);
+             $(".messages").animate({scrollTop: $(".messages")[0].scrollHeight},2000);
             }
           }
       })
     });
-
-    setInterval(function(){
-      show_messages();
-    },3000);
-  
 });
+ 
+setInterval(function(){
+  show_messages();
+},3000);
 // show messages from database
 
 function show_messages(){
@@ -101,7 +102,18 @@ function show_messages(){
     data : {'message': msg},
     success : function(feedback){
       // console.log(feedback);
-      $(".messages").html(feedback);
+
+        var scrollpos = $(".messages").scrollTop();
+        var scrollpos = parseInt(scrollpos) + 520;
+        var scrollHeight = $(".messages").prop('scrollHeight');
+
+        $(".messages").html(feedback);
+
+        if( scrollpos < scrollHeight ){
+          
+        }else{
+          $(".messages").scrollTop($(".messages").prop('scrollHeight'));
+        }
       
     }
   });
