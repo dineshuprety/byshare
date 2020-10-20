@@ -159,6 +159,7 @@
                   if($obj->Normal_Query("UPDATE byshare_profile_details SET byshare_profile_details_profile_pic = ? WHERE byshare_profile_details_username = ? ",[$img_name, $this->getUsername()])){
                   $obj->Create_Session("settings_updates","Your image is successfully updated");
                   header('location:setting.php');
+                  die();
                   }
                 }
           }
@@ -232,6 +233,7 @@
 
                       $obj->Create_Session("settings_updates","Your details is successfully updated");
                       header('location:setting.php');
+                      die();
                      }
 
                   }
@@ -282,6 +284,7 @@
                 if($obj->Normal_Query("UPDATE byshare_users SET byshare_password = ? WHERE byshare_id = ?",[password_hash($newpassword1,PASSWORD_DEFAULT),$_SESSION['byshare_user_id']])){
                  $obj->Create_Session("settings_updates","Your password is successfully updated");
                       header('location:setting.php');
+                      die();
                 }
               }
             

@@ -57,7 +57,7 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
         <!-- side-bar include end -->
 
     <section id="chat-area">
-    
+                
         <!-- messages include -->
           <?php include 'component/messages.php'; ?>
           <!-- messages include end -->

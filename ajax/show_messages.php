@@ -1,24 +1,33 @@
 <?php 
+$time = time();
 include '../init.php';
 $obj = new base_class;
 error_reporting(0);
 if(isset($_GET['message'])){
   
   $userLoggedIn = $_SESSION['byshare_username'];
-  $user_too      = $_SESSION['user_to'];
-  $data = "";
+  $user_too     = $_SESSION['user_to'];
+  $uid          = $_SESSION['byshare_user_id'];
+  // it show me timestamp
+  
 
   if($obj->Normal_Query("UPDATE message SET opened = ? WHERE user_to = ? AND user_from = ?",["yes", $userLoggedIn, $user_too])){
 
-  // $obj->Normal_Query("SELECT * FROM message INNER JOIN byshare_profile_details ON  message.user_from = byshare_profile_details_username");
+      // $obj->Normal_Query("SELECT * FROM message INNER JOIN byshare_profile_details ON  message.user_from = byshare_profile_details_username");
 
-        $obj->Normal_Query("SELECT byshare_profile_details_fname, byshare_profile_details_lname,byshare_profile_details_profile_pic FROM byshare_profile_details WHERE byshare_profile_details_username = ?",[$user_too]);
+      // to show the right side name and images 
+        $obj->Normal_Query("SELECT byshare_profile_details_fname, byshare_profile_details_lname,byshare_profile_details_profile_pic , online_users FROM byshare_profile_details WHERE byshare_profile_details_username = ?",[$user_too]);
 
         $row = $obj->Single_Result();
         $fname = $row->byshare_profile_details_fname;
         $lname = $row->byshare_profile_details_lname;
         $image = $row->byshare_profile_details_profile_pic;
+        $online = $row->online_users;
         $name = $fname.' '.$lname;
+        $class = "offline-icon";
+        if($online > $time){
+          $class = "online-icon";
+        }
 
       if($obj->Normal_Query("SELECT * FROM message WHERE (user_to = ? AND user_from = ?) OR (user_from = ? AND user_to = ?)",[$userLoggedIn, $user_too, $userLoggedIn, $user_too])){
 
@@ -35,7 +44,7 @@ if(isset($_GET['message'])){
               $msg_type = $row->msg_type;
               $date_time = $obj->time_ago($row->msg_time);
 
-
+            
               if($user_from == $userLoggedIn){
                 // right user messgaes
                 // echo $body,"<br>";
@@ -168,7 +177,7 @@ if(isset($_GET['message'])){
                     echo '<div class="left-message common-margin">
                     <div class="sender-img-block">
                     <img src="assets/images/'.$image.'" class="sender-img">
-                    <span class="online-icon">
+                    <span class="'.$class.'">
             
                     </span>
                     </div><!-- close left message -->
@@ -192,7 +201,7 @@ if(isset($_GET['message'])){
                   echo '<div class="left-message common-margin">
                     <div class="sender-img-block">
                     <img src="assets/images/'.$image.'" class="sender-img">
-                    <span class="online-icon">
+                    <span class="'.$class.'">
             
                     </span>
                     </div><!-- close left message -->
@@ -217,7 +226,7 @@ if(isset($_GET['message'])){
                   echo '<div class="left-message common-margin">
                     <div class="sender-img-block">
                     <img src="assets/images/'.$image.'" class="sender-img">
-                    <span class="online-icon">
+                    <span class="'.$class.'">
             
                     </span>
                     </div><!-- close left message -->
@@ -242,7 +251,7 @@ if(isset($_GET['message'])){
                   echo '<div class="left-message common-margin">
                     <div class="sender-img-block">
                     <img src="assets/images/'.$image.'" class="sender-img">
-                    <span class="online-icon">
+                    <span class="'.$class.'">
             
                     </span>
                     </div><!-- close left message -->
@@ -265,7 +274,7 @@ if(isset($_GET['message'])){
                   echo '<div class="left-message common-margin">
                     <div class="sender-img-block">
                     <img src="assets/images/'.$image.'" class="sender-img">
-                    <span class="online-icon">
+                    <span class="'.$class.'">
             
                     </span>
                     </div><!-- close left message -->
@@ -289,7 +298,7 @@ if(isset($_GET['message'])){
                   echo '<div class="left-message common-margin">
                     <div class="sender-img-block">
                     <img src="assets/images/'.$image.'" class="sender-img">
-                    <span class="online-icon">
+                    <span class="'.$class.'">
             
                     </span>
                     </div><!-- close left message -->
@@ -314,7 +323,7 @@ if(isset($_GET['message'])){
                   echo '<div class="left-message common-margin">
                     <div class="sender-img-block">
                     <img src="assets/images/'.$image.'" class="sender-img">
-                    <span class="online-icon">
+                    <span class="'.$class.'">
             
                     </span>
                     </div><!-- close left message -->
@@ -338,7 +347,7 @@ if(isset($_GET['message'])){
                   echo '<div class="left-message common-margin">
                     <div class="sender-img-block">
                     <img src="assets/images/'.$image.'" class="sender-img">
-                    <span class="online-icon">
+                    <span class="'.$class.'">
             
                     </span>
                     </div><!-- close left message -->
@@ -362,7 +371,7 @@ if(isset($_GET['message'])){
                   echo '<div class="left-message common-margin">
                     <div class="sender-img-block">
                     <img src="assets/images/'.$image.'" class="sender-img">
-                    <span class="online-icon">
+                    <span class="'.$class.'">
             
                     </span>
                     </div><!-- close left message -->

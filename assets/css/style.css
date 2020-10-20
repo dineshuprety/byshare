@@ -269,11 +269,14 @@ body{
   /* translate: uppercase; */
   /* flex-shrink: 0; */
 }
+
+/* === search bar */
 .search-bar {
   height: 80px;
-  z-index: 3;
+  z-index: 99999999;
   position: relative;
   margin-left: 280px;
+  padding-top:30px;
 }
 .search-bar input {
   height: 100%;
@@ -286,12 +289,61 @@ body{
   background-repeat: no-repeat;
   background-size: 16px;
   background-position: 25px 48%;
-  /* font-family: var(--body-font); */
+  font-family: var(--body-font);
   font-weight: 300;
   font-size: 15px;
-  /* overflow: visible; */
+  overflow: visible;
   outline: none;
 }
+.search_results {
+	background-color: #fff;
+  border: 1px solid #DADADA;
+  border-bottom: none;
+  border-top: none;
+  margin-top: 20px;  
+}
+.search_results_footer{
+  padding: 7px 4px 0px 4px;
+  height: 30px;
+  border: 1px solid #DADADA;
+  border-top: none;
+  background-color:var(--color-green-dark);
+  text-align: center;
+}
+.search_results_footer a {
+	color: #fff;
+}
+.resultDisplay {
+  padding: 5px 5px 0 5px;
+	height: 70px;
+  border-bottom: 1px solid #D3D3D3;
+}
+.resultDisplay a {
+  float: none;
+}
+.resultDisplay:hover {
+	background-color: #EBEBEB;
+	text-decoration: none;
+}
+.liveSearchProfilePic img {
+	height: 50px;
+	border-radius: 25px;
+	margin: 1px 12px 0 2px;
+	float: left;
+}
+
+.liveSearchText {
+	background-color: transparent;
+	color: var(--color-black);
+}
+
+.liveSearchText p{
+	margin-left: 10px;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+/* == end == */
 .chat-container{
   display: flex;
 

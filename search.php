@@ -41,9 +41,7 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
         <!-- side-bar include end -->
 
     <section id="chat-area">
-
-
-      
+  
     </section><!-- close chat-area -->
 
     <!-- right area include -->
