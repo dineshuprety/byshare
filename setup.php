@@ -54,6 +54,7 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
     $detail    = trim($_POST['details']);//remove html tag
     $member     = date('Y-m-d'); // current date
     $byshare_user_id = $_SESSION['byshare_user_id']; // storeing user id in var form session
+    $online_users = 0;
 
     $fname_status = $lname_status = $phone_num_status = $country_name_status = $dob_status = $skills_status = $gender_status = $details_status = $image_status = 1;
 
@@ -131,11 +132,10 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
     if(!empty($fname_status) && !empty($lname_status) && !empty($phone_num_status) && !empty($country_name_status) && !empty($dob_status) && !empty($skills_status) && !empty($gender_status) && !empty($details_status) && !empty($image_status)){
 
        $username = $obj->concatUsername($fname,$lname);
+       $obj->Create_Session("byshare_username",$username);
         
-        $obj->Create_Session("byshare_username",$username);
-        
-        if($obj->Normal_Query("INSERT INTO byshare_profile_details (byshare_id, byshare_profile_details_fname, byshare_profile_details_lname, 	byshare_profile_details_username, byshare_profile_details_profile_pic, byshare_profile_details_dob, byshare_profile_details_skill, byshare_profile_details_phone_num, byshare_profile_details_country, byshare_profile_details_member, byshare_profile_details_gender, byshare_profile_details_your_info) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",[$byshare_user_id, $fname, $lname, $username, $img_name, $dob, $skills, $phone_num, $country_name, $member, $gender, $detail])){
-          
+        if($obj->Normal_Query("INSERT INTO byshare_profile_details (byshare_id, byshare_profile_details_fname, byshare_profile_details_lname, 	byshare_profile_details_username, byshare_profile_details_profile_pic, byshare_profile_details_dob, byshare_profile_details_skill, byshare_profile_details_phone_num, byshare_profile_details_country, byshare_profile_details_member, byshare_profile_details_gender, byshare_profile_details_your_info, online_users) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ?)",[$byshare_user_id, $fname, $lname, $username, $img_name, $dob, $skills, $phone_num, $country_name, $member, $gender, $detail, $online_users])){
+
           move_uploaded_file($img_tmp, "$img_path/$img_name");
           // change status to 1
           $update_setup_page = 1;

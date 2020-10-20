@@ -20,6 +20,7 @@ elseif(count($names) == 2){
 }
 
 if($query != ""){
+
   while($row = $obj->Single_Result()){
     $user_id  = $row->byshare_id;
     $username = $row->byshare_profile_details_username;
@@ -28,27 +29,18 @@ if($query != ""){
     $lname    = $row->byshare_profile_details_lname;
     $skills = $row->byshare_profile_details_skill;
     $country  = $row->byshare_profile_details_country;
-
-      //select counrty from database
-      $obj->Normal_Query("SELECT  country_name FROM country WHERE country_id = '$country'");
-      $row1 = $obj->Single_Result();
-      $country_name = $row1->country_name;
-
-        //select skills from database
-      $obj->Normal_Query("SELECT skills_id, skills_name FROM skills WHERE skills_id = '$skills'");
-      $row2 = $obj->Single_Result();
-      $skills_name = $row2->skills_name;
-
-    echo "<div class='resultDisplay'>
-            <a href='" . $username . "' style='color: #1485BD'>
+    
+         echo"<div class='resultDisplay'>
+            <a id ='GFG' href='" . $username . "' style='color: #1485BD'>
               <div class='liveSearchProfilePic'>
                 <img src='assets/images/" . $profile ."'>
               </div>
 
               <div class='liveSearchText'>
                 " . $fname. " " . $lname . "
-                <p> Country: " .$country_name ."</p>
-                <p> Skills: " .$skills_name ."</p>
+                <p> Skills: " .$skills."</p>
+                <p> Country: " .$country."</p>
+                
               </div>
             </a>
         </div>";

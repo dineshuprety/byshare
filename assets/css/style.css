@@ -340,9 +340,10 @@ body{
 .liveSearchText p{
 	margin-left: 10px;
   font-size: 12px;
-  text-decoration: underline;
 }
-
+#GFG { 
+  text-decoration: none; 
+} 
 /* == end == */
 .chat-container{
   display: flex;
