@@ -41,13 +41,12 @@ if(isset($_GET['message'])){
               // $user_to = $row->user_to;
               $user_from = $row->user_from;
               $body = htmlentities($row->messages); 
-              $msg_type = $row->msg_type;
+              $msg_type = strtolower($row->msg_type);
               $date_time = $obj->time_ago($row->msg_time);
 
             
               if($user_from == $userLoggedIn){
-                // right user messgaes
-                // echo $body,"<br>";
+                
                 if($msg_type == "text"){
 
                     echo '<div class="right-messages common-margin">

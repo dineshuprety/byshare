@@ -344,6 +344,89 @@ body{
 #GFG { 
   text-decoration: none; 
 } 
+.search-col{
+  width: 100%;
+  height: 90vh;
+  padding: 2rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+/* ============== requests-list ============== */
+.noty-user-img {
+	float: left;
+	width: 60px;
+}
+.noty-user-img img {
+	width: 100%;
+}
+.requests-list {
+	float: left;
+	width: 100%;
+  padding-bottom: 0;
+  background-color: var(--color-white);
+}
+.request-details {
+	float: left;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.request-details:last-child {
+	border-bottom: 0;
+}
+.request-info {
+	float: left;
+	padding-left: 10px;
+}
+.request-info h3 {
+	color: #000000;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 0;
+	border: 0;
+	margin-bottom: 3px;
+}
+.request-info span {
+	color: #686868;
+	font-size: 12px;
+	display: inline-block;
+}
+.accept-feat {
+	float: right;
+}
+.accept-feat ul li {
+	display: inline-block;
+}
+.accept-feat ul li button {
+	cursor: pointer;
+}
+.accept-req {
+	color: #ffffff;
+	font-size: 16px;
+	background-color: #51a5fb;
+	height: 30px;
+	padding: 0 20px;
+	font-weight: 600;
+	border: 0;
+	border: 1px solid #51a5fb;
+}
+.close-req {
+	height: 30px;
+	width: 30px;
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid #e5e5e5;
+	background: inherit;
+	color: #b2b2b2;
+	margin-left: 7px;
+}
+.close-req i {
+	font-weight: 600;
+}
+
 /* == end == */
 .chat-container{
   display: flex;

@@ -13,14 +13,11 @@ if(strpos($query, '_') !== false) {
 }
 elseif(count($names) == 2){
   //If there are two words, assume they are first and last names respectively
-  $obj->Normal_Query("SELECT * FROM byshare_profile_details WHERE (byshare_profile_details_fname LIKE '$names[0]%' AND byshare_profile_details_lname LIKE '$names[1]%') AND user_close = 'no' LIMIT 8");
+  $obj->Normal_Query("SELECT * FROM byshare_profile_details WHERE (byshare_profile_details_fname LIKE '$names[0]%' AND byshare_profile_details_lname LIKE '$names[1]%' AND byshare_profile_details_skill LIKE '$names[1]%') AND user_close = 'no' LIMIT 8");
 
-  $obj->Normal_Query("SELECT * FROM byshare_profile_details WHERE byshare_profile_details_skill LIKE '$names[1]%' AND user_close = 'no' LIMIT 8");
 }else{
   //If query has one word only, search first names or last names 
-  $obj->Normal_Query("SELECT * FROM byshare_profile_details WHERE ( byshare_profile_details_fname LIKE '$names[0]%' OR byshare_profile_details_lname LIKE '$names[0]%') AND user_close = 'no' LIMIT 8");
-
-  $obj->Normal_Query("SELECT * FROM byshare_profile_details WHERE byshare_profile_details_skill LIKE '$names[0]%' AND user_close = 'no' LIMIT 8");
+  $obj->Normal_Query("SELECT * FROM byshare_profile_details WHERE ( byshare_profile_details_fname LIKE '$names[0]%' OR byshare_profile_details_lname LIKE '$names[0]%' OR byshare_profile_details_skill LIKE '$names[0]%') AND user_close = 'no' LIMIT 8");
 }
 
 if($query != ""){
