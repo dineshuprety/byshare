@@ -213,7 +213,7 @@ if(isset($_GET['message'])){
                             '.$date_time.'
                         </span><!-- close date-time -->
                       </div><!-- close user-name-date -->
-                      <div class="left-files">
+                      <div class="left-files"style="background-color:#f1efef;">
                       <img src="assets/images/'.$body.'" class="common-images">
                       <a download="'.$body.'" href="assets/images/'.$body.'"class="all-files" title="Download it" ><i class="fa fa-arrow-circle-down fa-2x files-common"></i></a>
                       </div>
