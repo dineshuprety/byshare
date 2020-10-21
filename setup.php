@@ -42,14 +42,14 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
     $lname      = $obj->security($_POST['lname']);
     $lname      = ucfirst(strtolower($lname));//uppercase first letter
     $phone_num  = $obj->security($_POST['phone']);
-    $country_name = $obj->security($_POST['country']);
+    $country_name = strip_tags(trim($_POST['country']));
     $img_name   = $_FILES['images']['name'];
     $img_name   = uniqid(). basename($img_name);
     $img_tmp    = $_FILES['images']['tmp_name'];  
     $img_path   = "assets/images";
     $imageFileType = pathinfo($img_name, PATHINFO_EXTENSION);
     $dob        = $obj->security($_POST['date']);
-    $skills     = $obj->security($_POST['skills']);
+    $skills     = strip_tags(trim($_POST['skills']));
     $gender     = $obj->security($_POST['gender']);
     $detail    = trim($_POST['details']);//remove html tag
     $member     = date('Y-m-d'); // current date

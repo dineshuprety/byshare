@@ -78,7 +78,7 @@ if(isset($_POST['change_image'])){
               <?php 
                 $obj->Normal_Query("SELECT country_id, country_name, phonecode FROM country");
                 while($row = $obj->Single_Result()){ ?>
-                  <option value="<?php echo $row->country_id; ?>" <?php echo $row->country_id == $country?'selected':'' ?>><?php echo htmlentities($row->country_name).' ,'.htmlentities($row->phonecode); ?></option>
+                  <option value="<?php echo $row->country_name; ?>" <?php echo $row->country_name == $country?'selected':'' ?>><?php echo htmlentities($row->country_name); ?></option>
                <?php }
 
               ?>
@@ -100,7 +100,7 @@ if(isset($_POST['change_image'])){
               <?php 
                 $obj->Normal_Query("SELECT skills_id, skills_name FROM skills");
                 while($row = $obj->Single_Result()){ ?>
-                  <option value="<?php echo $row->skills_id; ?>" <?php echo $row->skills_id == $skill?'selected':'' ?>><?php echo htmlentities($row->skills_name); ?></option>
+                  <option value="<?php echo $row->skills_name; ?>" <?php echo $row->skills_name == $skill?'selected':'' ?>><?php echo htmlentities($row->skills_name); ?></option>
                <?php }
 
               ?>

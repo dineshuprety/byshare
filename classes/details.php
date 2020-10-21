@@ -73,19 +73,7 @@
         $class = "fa fa-female info";
       }
 
-        // select country table
-        $query1 = $this->con->prepare("SELECT country_id, country_name, phonecode FROM country WHERE country_id = ?");
-        $query1->execute([$country]);
-        $row1 = $query1->fetch(PDO::FETCH_OBJ);
-        $country_name = $row1->country_name;
-        $phone_code   = $row1->phonecode;
-
-        // select skills from table
-        $query2 = $this->con->prepare("SELECT skills_id, skills_name FROM skills WHERE skills_id = ?");
-        $query2->execute([$skill]);
-        $row2 = $query2->fetch(PDO::FETCH_OBJ);
-        $skills_name = $row2->skills_name;
-
+        
         // select gmail from user table
         
         $query3 = $this->con->prepare("SELECT byshare_email FROM byshare_users WHERE byshare_id = ?");
@@ -102,7 +90,7 @@
         </div>
         </div>
         <div class="main-container">
-        <p><i class="fa fa-home info" ></i> '.htmlentities($country_name).' ,'.htmlentities($phone_code).'</p><br>
+        <p><i class="fa fa-home info" ></i> '.htmlentities($country).'</p><br>
         <p><i class="fa fa-envelope info" ></i> '.htmlentities($gmail).'</p><br>
         <p><i class="fa fa-phone info" ></i> '.htmlentities($phone).'</p><br>
         <p><i class="fa fa-birthday-cake info"></i> '.str_replace('-','/',$dob).'</p><br>
@@ -110,7 +98,7 @@
         <hr>
         <p><br><i class="fa fa-asterisk info" ></i> Skills</b></p>
         <ul style="padding-left: 40px;" class="info">
-        <li><p>'.htmlentities($skills_name).'</p></li>
+        <li><p>'.htmlentities($skill).'</p></li>
         </ul><br>
         <hr>
         <p><br><i class="fa fa-info info" ></i> Details</b></p>
@@ -174,9 +162,9 @@
                   $lname      = $obj->security($_POST['lname']);
                   $lname      = ucfirst(strtolower($lname));//uppercase first letter
                   $phone_num  = $obj->security($_POST['phone']);
-                  $country_name = $obj->security($_POST['country']);
+                  $country_name = strip_tags(trim($_POST['country']));
                   $dob        = $obj->security($_POST['date']);
-                  $skills     = $obj->security($_POST['skills']);
+                  $skills     = strip_tags(trim($_POST['skills']));
                   $gender     = $obj->security($_POST['gender']);
                   $detail    = trim($_POST['details']);//remove html tag
                   $byshare_user_id = $_SESSION['byshare_user_id']; // storeing user id in var form session

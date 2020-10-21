@@ -44,7 +44,7 @@
                   $country_names = $row->country_name;
                   $phone_code    = $row->phonecode;
               ?>
-                <option value="<?php echo $country_id; ?>"><?php echo ucfirst(strtolower($country_names)).' , +'.$phone_code; ?></option>
+                <option value="<?php echo ucfirst(strtolower($country_names));?>"><?php echo ucfirst(strtolower($country_names)); ?></option>
               <?php } ?>
           </select>
           <div class="name-error error">
@@ -80,10 +80,9 @@
 
                 $obj->Normal_Query("SELECT * FROM skills");
                 while($row = $obj->Single_Result()){
-                  $skills_id = $row->skills_id;
                   $skill_name = $row->skills_name;
               ?>
-                <option value="<?php echo $skills_id; ?>"><?php echo ucfirst(strtolower($skill_name)); ?></option>
+                <option value="<?php echo ucfirst(strtolower($skill_name)); ?>"><?php echo ucfirst(strtolower($skill_name)); ?></option>
               <?php } ?>
           </select>
           <div class="name-error error">
