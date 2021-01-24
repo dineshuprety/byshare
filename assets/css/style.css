@@ -343,6 +343,7 @@ body{
 }
 #GFG { 
   text-decoration: none; 
+  
 } 
 .search-col{
   width: 100%;
@@ -800,6 +801,18 @@ body{
   left: 50px;
   bottom: 19px;
 }
+.msg.offline:before {
+  content: "";
+  position: absolute;
+  background-color: black;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 2px solid var(--theme-bg-color);
+  left: 50px;
+  bottom: 19px;
+}
+
 
 .msg-username {
   margin-bottom: 4px;

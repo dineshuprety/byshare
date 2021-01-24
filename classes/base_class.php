@@ -132,6 +132,45 @@
           }
       }
     }
+
+    public function getLatesMessage($userLoggedIn,$user_too){
+      
+      $details_array =array();
+      $body = "";
+
+      $this->Normal_Query("SELECT * FROM message WHERE (user_to = ? AND user_from = ?) OR (user_from = ? AND user_to = ?) ORDER BY msg_id DESC LIMIT 1",[$userLoggedIn, $user_too, $userLoggedIn, $user_too]);
+
+      $row = $this->Single_Result();
+      $user_to = $row->user_to;
+      $send_by = ($user_to == $userLoggedIn) ? "They said: " : "You said: ";
+      //Timeframe
+      $date_time = substr($this->time_ago($row->msg_time),0,3);
+      $msg_type = strtolower($row->msg_type);
+
+      if($msg_type == "text"){
+        $body = htmlentities($row->messages); 
+      }elseif($msg_type == "png" || $msg_type == "jpg" || $msg_type == "jpeg"){
+        $body = "image send ";
+      }elseif($msg_type == "zip"){
+        $body = "Zip send";
+      }elseif($msg_type == "txt"){
+        $body = "text file send";
+      }elseif($msg_type == "pdf"){
+        $body = "pdf send";
+      }elseif($msg_type == "emoji"){
+        $body = "Sticker Send";
+      }elseif($msg_type == "docx"){
+        $body = "docx send";
+      }elseif($msg_type == "xlsx"){
+        $body = "xlsx send";
+      }
+        
+        array_push($details_array, $send_by);
+		    array_push($details_array, $body);
+		    array_push($details_array, $date_time);
+
+	    	return $details_array;
+    }
     
   }
 
