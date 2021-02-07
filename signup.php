@@ -2,8 +2,7 @@
 include 'init.php';
 $obj = new base_class;
 if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
-  $html = '
-                <html>
+  $html = '     <html>
                 <head>
                 <link rel="icon" href="assets/images/logo.png" type="image/gif" sizes="16x16">
                 <link rel="stylesheet" href="assets/css/style-exit.css">

@@ -7,7 +7,7 @@
         <div class="search-bar">
 
             <form action="search.php" method="GET" name="search_form">
-              <input type="text" onkeyup="getLiveSearchUsers(this.value, '<?php echo $_SESSION['byshare_username']; ?>')" name="q" placeholder="Search..." autocomplete="off" id="search_text_input">
+              <input type="text" onkeyup="getLiveSearchUsers($.trim(this.value), '<?php echo $_SESSION['byshare_username']; ?>')" name="q" placeholder="Search..." autocomplete="off" id="search_text_input">
             </form>
 
           <div class="search_results">

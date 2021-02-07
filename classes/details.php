@@ -104,6 +104,11 @@
         <p><br><i class="fa fa-info info" ></i> Details</b></p>
         <ul style="padding-left: 40px;" class="info">
         <li><p>'. htmlentities($details).'</p></li>
+        </ul><br>
+        <hr>
+        <p><br><i class="fa fa-whatsapp info" ></i> Chat With Me</b></p><br>
+        <ul style="padding-left: 40px;" class="info">
+        <a id="GFG" href="message.php?u='.$username.'" ><input type="button" value="Chat With ME"  class="btn try-btn" ></a>
         </ul>
         </div>
         </div>
