@@ -61,7 +61,49 @@ if(isset($_SESSION['byshare_email']) && isset($_SESSION['byshare_password'])){
           <div class="search-col">
       <?php 
             if($query == ""){
-            echo "<h1 style='color:green;font-size:5rem;'>You must enter something in the search box.</h1>";
+
+            // echo "<h1 style='color:green;font-size:5rem;'>You must enter something in the search box.</h1>";
+            
+            // to fetch the skill to search the top 8 same catagory
+            $obj->Normal_Query("SELECT byshare_profile_details_username,byshare_profile_details_skill FROM byshare_profile_details WHERE  byshare_profile_details_username = ? ",[$_SESSION['byshare_username']]);
+            $row1 = $obj->Single_Result();
+            $userskill = $row1->byshare_profile_details_skill;
+
+            $obj->Normal_Query("SELECT * FROM byshare_profile_details WHERE byshare_profile_details_skill = ? AND user_close = 'no' LIMIT 8",[$userskill]);
+              // fetch the data
+              while($row = $obj->Single_Result()){
+                $username = $row->byshare_profile_details_username;
+                $profile  = $row->byshare_profile_details_profile_pic;
+                $fname    = $row->byshare_profile_details_fname;
+                $lname    = $row->byshare_profile_details_lname;
+                $skills = $row->byshare_profile_details_skill;
+                $country  = $row->byshare_profile_details_country;
+
+                if($_SESSION['byshare_username'] == $username){
+                  $button = '<li><a id="GFG"class="accept-req">Own</a></li>';
+                }else{
+                  $button = '<li><a id="GFG" href="message.php?u='.$username.'"class="accept-req">Chat</a></li>';
+                }
+          echo '
+                <div class="requests-list">
+                  <div class="request-details">
+                    <div class="noty-user-img">
+                      <img src="assets/images/'.$profile.'" alt="">
+                    </div>
+                    <div class="request-info">
+                      <h3>'.$fname.' '.$lname.'</h3>
+                      <span>'.$skills.'</span>
+                    </div>
+                    <div class="accept-feat">
+                      <ul>
+                        '.$button.'
+                        <li><a  id="GFG" href="'.$username.'" class="close-req"><i class="fa fa-user"></i></a></li>
+                      </ul>
+                    </div><!--accept-feat end-->
+                  </div><!--request-detailse end-->';
+
+              }//end while loop
+
             }else{
                 //If query contains an underscore, assume user is searching for usernames
               if($type == "username"){ 

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 01, 2021 at 07:22 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.1.32
+-- Host: 127.0.0.1
+-- Generation Time: Feb 27, 2021 at 02:00 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -46,15 +45,6 @@ CREATE TABLE `byshare_profile_details` (
   `user_close` varchar(3) NOT NULL DEFAULT 'no'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
---
--- Dumping data for table `byshare_profile_details`
---
-
-INSERT INTO `byshare_profile_details` (`byshare_profile_details_id`, `byshare_id`, `byshare_profile_details_fname`, `byshare_profile_details_lname`, `byshare_profile_details_username`, `byshare_profile_details_profile_pic`, `byshare_profile_details_dob`, `byshare_profile_details_skill`, `byshare_profile_details_phone_num`, `byshare_profile_details_country`, `byshare_profile_details_member`, `byshare_profile_details_gender`, `byshare_profile_details_your_info`, `online_users`, `user_close`) VALUES
-(1, 1, 'Dinesh', 'Uprety', 'dinesh_uprety', '5f8f9bff38cf8code.png', '2000-05-29', 'Programming', '9807393225', 'Nepal', '2020-10-21', 'Male', 'Hi, I am a full stack developer. I am a freelancer developer. if anyone wanna hire me she/he can visit my website: https://dineshuprety.com.np', 1612193382, 'no'),
-(2, 3, 'Nep', 'Uprety', 'dinesh_uprety_0', '5f8f9eaca8992weed.jpg', '2000-05-29', 'node.js', '9807393225', 'Nepal', '2020-10-21', 'Male', 'Hi, I am a full stack developer. I am a freelancer developer. if anyone wanna hire me she/he can visit my website: https://dineshuprety.com.np', 1610261300, 'no'),
-(3, 2, 'Dynamic', 'Hacker', 'dynamic_hacker', '5fce58985b5b0photo.jpg', '2000-05-29', 'Eithcal hacking', '9807393225', 'Nepal', '2020-10-21', 'Male', 'Hi, I am a nephacke(Dhacker). I work for government to secure there website and database thank you :)!', 1612193392, 'no');
-
 -- --------------------------------------------------------
 
 --
@@ -69,15 +59,6 @@ CREATE TABLE `byshare_users` (
   `byshare_status` bigint(20) NOT NULL,
   `byshare_setup_status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
-
---
--- Dumping data for table `byshare_users`
---
-
-INSERT INTO `byshare_users` (`byshare_id`, `byshare_email`, `byshare_password`, `byshare_close_user`, `byshare_status`, `byshare_setup_status`) VALUES
-(1, 'coffeecoder500@gmail.com', '$2y$10$1J4lOenQsZIS3JLIjuWDA.PDP02HYgdDXjTyBPXFLGkT6HLwyXEyW', 'no', 0, 1),
-(2, 'nepha6ker@gmail.com', '$2y$10$xVrS1ppDyZZ9zFfiSe64pODGzC1/bM8EJotDrx/UcpmVwb9RLlaUi', 'no', 0, 1),
-(3, 'dineshuprety500@gmail.com', '$2y$10$NUK.kb7FQb7rzbt0IFlZP.PP6pf04o4hFuDN19Fl.bWPql17M3Wiy', 'no', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -369,85 +350,17 @@ CREATE TABLE `message` (
   `deleted` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `message`
+-- Table structure for table `report_bug`
 --
 
-INSERT INTO `message` (`msg_id`, `user_to`, `user_from`, `messages`, `msg_type`, `msg_time`, `opened`, `viewed`, `deleted`) VALUES
-(1, 'dinesh_uprety', 'dinesh_uprety_0', 'hey', 'text', '2020-10-21 03:36:54', 'yes', 'yes', 'no'),
-(2, 'dinesh_uprety_0', 'dynamic_hacker', 'hey', 'text', '2020-10-21 05:01:00', 'yes', 'yes', 'no'),
-(3, 'dynamic_hacker', 'dinesh_uprety_0', 'hello', 'text', '2020-10-21 05:01:07', 'yes', 'yes', 'no'),
-(4, 'dinesh_uprety_0', 'dynamic_hacker', 'i having problem in php code can you fix it?', 'text', '2020-10-21 05:02:08', 'yes', 'yes', 'no'),
-(5, 'dynamic_hacker', 'dinesh_uprety_0', 'sure i will try my best', 'text', '2020-10-21 05:02:28', 'yes', 'yes', 'no'),
-(6, 'dinesh_uprety_0', 'dynamic_hacker', 'thank you i have to go now chat you later nep hacker', 'text', '2020-10-21 05:03:14', 'yes', 'yes', 'no'),
-(7, 'dinesh_uprety_0', 'dynamic_hacker', 'assets/images/emoji/001-smile.png', 'emoji', '2020-10-21 05:03:17', 'yes', 'yes', 'no'),
-(8, 'dynamic_hacker', 'dinesh_uprety_0', 'see you soon', 'text', '2020-10-21 05:03:31', 'yes', 'yes', 'no'),
-(9, 'dynamic_hacker', 'dinesh_uprety_0', 'you are a hacker why you need an help', 'text', '2020-10-21 05:04:07', 'yes', 'yes', 'no'),
-(10, 'dinesh_uprety_0', 'dynamic_hacker', 'just i wanna hack some banks thats why hahahaha', 'text', '2020-10-21 05:04:33', 'yes', 'yes', 'no'),
-(11, 'dinesh_uprety_0', 'dynamic_hacker', 'assets/images/emoji/003-happy.png', 'emoji', '2020-10-21 05:04:39', 'yes', 'yes', 'no'),
-(12, 'dinesh_uprety_0', 'dynamic_hacker', 'bye nep', 'text', '2020-10-21 05:05:28', 'yes', 'yes', 'no'),
-(13, 'dynamic_hacker', 'dinesh_uprety_0', 'bye', 'text', '2020-10-21 05:05:35', 'yes', 'yes', 'no'),
-(14, 'dynamic_hacker', 'dinesh_uprety_0', 'assets/images/emoji/044-silly.png', 'emoji', '2020-10-21 05:05:48', 'yes', 'yes', 'no'),
-(15, 'dinesh_uprety_0', 'dynamic_hacker', '5f8ffbad85edbIMG_3135.JPG', 'JPG', '2020-10-21 09:13:17', 'yes', 'yes', 'no'),
-(16, 'dinesh_uprety_0', 'dynamic_hacker', 'assets/images/emoji/009-kiss.png', 'emoji', '2020-10-21 09:32:22', 'yes', 'yes', 'no'),
-(17, 'dynamic_hacker', 'dinesh_uprety_0', '5f9000fa50cd0Dinesh Uprety.pdf', 'pdf', '2020-10-21 09:35:54', 'yes', 'yes', 'no'),
-(18, 'dinesh_uprety_0', 'dynamic_hacker', 'assets/images/emoji/025-cool.png', 'emoji', '2020-10-21 09:36:44', 'yes', 'yes', 'no'),
-(19, 'dynamic_hacker', 'dinesh_uprety_0', 'hey dinesh', 'text', '2020-10-23 06:58:37', 'yes', 'yes', 'no'),
-(20, 'dinesh_uprety_0', 'dynamic_hacker', 'k gardai xas', 'text', '2020-10-23 06:58:48', 'yes', 'yes', 'no'),
-(21, 'dinesh_uprety_0', 'dynamic_hacker', 'assets/images/emoji/004-happy.png', 'emoji', '2020-10-23 06:58:55', 'yes', 'yes', 'no'),
-(22, 'dynamic_hacker', 'dinesh_uprety_0', '5f927f44eef03IMG_3135.JPG', 'JPG', '2020-10-23 06:59:16', 'yes', 'yes', 'no'),
-(23, 'dynamic_hacker', 'dinesh_uprety_0', '5f927f5688607Dinesh Uprety.pdf', 'pdf', '2020-10-23 06:59:34', 'yes', 'yes', 'no'),
-(24, 'dynamic_hacker', 'dinesh_uprety_0', 'hey nep', 'text', '2020-10-30 07:01:29', 'yes', 'yes', 'no'),
-(25, 'dynamic_hacker', 'dinesh_uprety_0', 'assets/images/emoji/007-tongue out.png', 'emoji', '2020-10-30 07:01:38', 'yes', 'yes', 'no'),
-(26, 'dinesh_uprety_0', 'dynamic_hacker', 'assets/images/emoji/009-kiss.png', 'emoji', '2020-10-30 07:01:46', 'yes', 'yes', 'no'),
-(27, 'dinesh_uprety', 'dinesh_uprety_0', 'assets/images/emoji/006-in love.png', 'emoji', '2020-10-30 07:03:35', 'yes', 'yes', 'no'),
-(28, 'dinesh_uprety', 'dinesh_uprety_0', '5f9bbb092f963Modern+Javascript+2020+Notes.pdf', 'pdf', '2020-10-30 07:04:41', 'yes', 'yes', 'no'),
-(29, 'dinesh_uprety_0', 'dinesh_uprety', 'hwy', 'text', '2020-11-21 07:01:01', 'yes', 'yes', 'no'),
-(30, 'dinesh_uprety_0', 'dinesh_uprety', '5fc5d4eb8d9a6chart.png', 'png', '2020-12-01 05:30:19', 'yes', 'yes', 'no'),
-(31, 'dinesh_uprety', 'dinesh_uprety_0', 'hey dinesh', 'text', '2020-12-01 05:31:41', 'yes', 'yes', 'no'),
-(32, 'dynamic_hacker', 'dinesh_uprety_0', 'assets/images/emoji/025-cool.png', 'emoji', '2020-12-01 05:34:21', 'yes', 'yes', 'no'),
-(33, 'dinesh_uprety', 'dinesh_uprety_0', 'assets/images/emoji/041-lie.png', 'emoji', '2020-12-01 05:35:23', 'yes', 'yes', 'no'),
-(34, 'dinesh_uprety', 'dinesh_uprety_0', 'try 1', 'text', '2020-12-01 05:39:39', 'yes', 'yes', 'no'),
-(35, 'dinesh_uprety_0', 'dinesh_uprety', 'hey', 'text', '2020-12-07 15:16:51', 'yes', 'yes', 'no'),
-(36, 'dinesh_uprety_0', 'dinesh_uprety', 'hello', 'text', '2020-12-07 15:35:51', 'yes', 'yes', 'no'),
-(37, 'dynamic_hacker', 'dinesh_uprety', 'hey', 'text', '2020-12-07 15:41:57', 'yes', 'yes', 'no'),
-(38, 'dynamic_hacker', 'dinesh_uprety', 'assets/images/emoji/008-confused.png', 'emoji', '2020-12-07 16:06:36', 'yes', 'yes', 'no'),
-(39, 'dinesh_uprety', 'dynamic_hacker', 'k gardai', 'text', '2020-12-07 16:22:24', 'yes', 'yes', 'no'),
-(40, 'dynamic_hacker', 'dinesh_uprety', 'oa', 'text', '2020-12-08 05:19:29', 'yes', 'yes', 'no'),
-(41, 'dinesh_uprety', 'dinesh_uprety_0', 'oa', 'text', '2020-12-08 05:20:12', 'yes', 'yes', 'no'),
-(42, 'dinesh_uprety_0', 'dinesh_uprety', 'assets/images/emoji/009-kiss.png', 'emoji', '2020-12-08 05:26:17', 'yes', 'yes', 'no'),
-(43, 'dinesh_uprety_0', 'dinesh_uprety', 'assets/images/emoji/009-kiss.png', 'emoji', '2020-12-08 05:26:26', 'yes', 'yes', 'no'),
-(44, 'dinesh_uprety_0', 'dinesh_uprety', 'assets/images/emoji/042-ghost.png', 'emoji', '2020-12-08 05:43:14', 'yes', 'yes', 'no'),
-(45, 'dinesh_uprety', 'dynamic_hacker', 'hey dinesh', 'text', '2020-12-08 05:44:39', 'yes', 'yes', 'no'),
-(46, 'dinesh_uprety_0', 'dynamic_hacker', 'assets/images/emoji/008-confused.png', 'emoji', '2020-12-08 05:45:35', 'yes', 'yes', 'no'),
-(47, 'dynamic_hacker', 'dinesh_uprety', 'hello', 'text', '2020-12-08 05:46:38', 'yes', 'yes', 'no'),
-(48, 'dinesh_uprety_0', 'dinesh_uprety', 'assets/images/emoji/003-happy.png', 'emoji', '2020-12-08 05:49:43', 'yes', 'yes', 'no'),
-(49, 'dinesh_uprety_0', 'dinesh_uprety', 'k ghardai xas', 'text', '2020-12-08 05:53:16', 'yes', 'yes', 'no'),
-(50, 'dinesh_uprety_0', 'dynamic_hacker', 'oa', 'text', '2020-12-08 05:54:06', 'yes', 'yes', 'no'),
-(51, 'dinesh_uprety_0', 'dinesh_uprety', 'hello nep', 'text', '2020-12-08 10:13:31', 'yes', 'yes', 'no'),
-(52, 'dinesh_uprety_0', 'dinesh_uprety', 'assets/images/emoji/044-silly.png', 'emoji', '2020-12-19 08:05:38', 'yes', 'yes', 'no'),
-(53, 'dinesh_uprety_0', 'dinesh_uprety', '5fe196857c99169279123_362428057979862_9168113077818753024_n.jpg', 'jpg', '2020-12-22 06:47:33', 'yes', 'yes', 'no'),
-(54, 'dinesh_uprety', 'dinesh_uprety_0', 'assets/images/emoji/004-happy.png', 'emoji', '2020-12-22 06:48:55', 'yes', 'yes', 'no'),
-(55, 'dinesh_uprety_0', 'dinesh_uprety', 'oa jama', 'text', '2020-12-22 06:49:07', 'yes', 'yes', 'no'),
-(56, 'dinesh_uprety_0', 'dinesh_uprety', 'assets/images/emoji/001-smile.png', 'emoji', '2020-12-27 10:07:52', 'yes', 'yes', 'no'),
-(57, 'dinesh_uprety', 'dinesh_uprety_0', 'assets/images/emoji/008-confused.png', 'emoji', '2020-12-27 10:09:23', 'yes', 'yes', 'no'),
-(58, 'dinesh_uprety_0', 'dinesh_uprety', 'assets/images/emoji/005-neutral.png', 'emoji', '2021-01-03 03:35:58', 'yes', 'yes', 'no'),
-(59, 'dynamic_hacker', 'dinesh_uprety_0', 'assets/images/emoji/044-silly.png', 'emoji', '2021-01-03 03:42:17', 'no', 'yes', 'no'),
-(60, 'dinesh_uprety_0', 'dinesh_uprety', 'hey nep', 'text', '2021-01-10 06:45:10', 'yes', 'yes', 'no'),
-(61, 'dinesh_uprety', 'dinesh_uprety_0', 'hey', 'text', '2021-01-10 06:45:30', 'yes', 'yes', 'no'),
-(62, 'dinesh_uprety_0', 'dinesh_uprety', '5ffaa2a125efdchart.png', 'png', '2021-01-10 06:45:53', 'yes', 'yes', 'no'),
-(63, 'dynamic_hacker', 'dinesh_uprety', 'hey', 'text', '2021-01-27 12:48:19', 'yes', 'yes', 'no'),
-(64, 'dynamic_hacker', 'dinesh_uprety', 'oee muji k xa', 'text', '2021-01-29 08:12:58', 'yes', 'yes', 'no'),
-(65, 'dinesh_uprety', 'dynamic_hacker', 'thik xa', 'text', '2021-01-29 08:13:13', 'yes', 'yes', 'no'),
-(66, 'dinesh_uprety', 'dynamic_hacker', 'hi', 'text', '2021-01-29 08:13:30', 'yes', 'yes', 'no'),
-(67, 'dynamic_hacker', 'dinesh_uprety', 'assets/images/emoji/001-smile.png', 'emoji', '2021-01-29 08:13:57', 'yes', 'yes', 'no'),
-(68, 'dynamic_hacker', 'dinesh_uprety', '6013c3eda74abttt.zip', 'zip', '2021-01-29 08:14:37', 'yes', 'yes', 'no'),
-(69, 'dinesh_uprety_0', 'dinesh_uprety', 'hjh', 'text', '2021-01-29 08:38:14', 'no', 'no', 'no'),
-(70, 'dinesh_uprety_0', 'dinesh_uprety', 'hey', 'text', '2021-01-31 03:43:18', 'no', 'no', 'no'),
-(71, 'dinesh_uprety_0', 'dinesh_uprety', '<>', 'text', '2021-01-31 22:27:04', 'no', 'no', 'no'),
-(72, 'dinesh_uprety', 'dynamic_hacker', 'hey', 'text', '2021-02-01 15:22:17', 'yes', 'yes', 'no'),
-(73, 'dynamic_hacker', 'dinesh_uprety', 'hello', 'text', '2021-02-01 15:22:31', 'yes', 'yes', 'no'),
-(74, 'dinesh_uprety_0', 'dinesh_uprety', 'assets/images/emoji/031-angry.png', 'emoji', '2021-02-01 15:28:15', 'no', 'no', 'no');
+CREATE TABLE `report_bug` (
+  `report_bug_id` int(11) NOT NULL,
+  `report_user` varchar(50) NOT NULL,
+  `report_details` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
 -- --------------------------------------------------------
 
@@ -499,6 +412,12 @@ ALTER TABLE `message`
   ADD PRIMARY KEY (`msg_id`);
 
 --
+-- Indexes for table `report_bug`
+--
+ALTER TABLE `report_bug`
+  ADD PRIMARY KEY (`report_bug_id`);
+
+--
 -- Indexes for table `skills`
 --
 ALTER TABLE `skills`
@@ -512,13 +431,13 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `byshare_profile_details`
 --
 ALTER TABLE `byshare_profile_details`
-  MODIFY `byshare_profile_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `byshare_profile_details_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `byshare_users`
 --
 ALTER TABLE `byshare_users`
-  MODIFY `byshare_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `byshare_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `country`
@@ -530,7 +449,13 @@ ALTER TABLE `country`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `report_bug`
+--
+ALTER TABLE `report_bug`
+  MODIFY `report_bug_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `skills`

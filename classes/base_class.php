@@ -144,7 +144,7 @@
       $user_to = $row->user_to;
       $send_by = ($user_to == $userLoggedIn) ? "They said: " : "You said: ";
       //Timeframe
-      $date_time = substr($this->time_ago($row->msg_time),0,3);
+      $date_time = $this->con_time_ago($row->msg_time);
       $msg_type = strtolower($row->msg_type);
 
       if($msg_type == "text"){
@@ -171,7 +171,77 @@
 
 	    	return $details_array;
     }
+
+    public function con_time_ago($db_msg_time){
+
+      $db_time = strtotime($db_msg_time);
+
+      $current_time = time();
+
+      $seconds = $current_time - $db_time;
+      $minutes = floor($seconds/60);//60
+      $hours   = floor($seconds/3600);//60*60
+      $days    = floor($seconds/86400);//24 * 60 * 60
+      $weeks   = floor($seconds/604800);//7 * 24 * 60 * 60
+      $month   = floor($seconds/2592000);//30 * 7 * 24 * 60 * 60
+      $year    = floor($seconds/31536000);//365 * 30 * 7 * 24 * 60 * 60
+
+      if($seconds <= 60){
+          return "J ";
+      }
+      elseif($minutes <= 60){
+            if($minutes == 1){
+              return "1 m  ";
+            }else{
+              return $minutes." ms ";
+            }
+      }
+      elseif($hours <= 24){
+          if($hours == 1){
+            return "1 h ";
+          }else{
+            return $hours." hs ";
+          }
+      }
+      elseif($days <= 7){
+            if($days == 1){
+              return "1 d ";
+            }else{
+              return $days." ds ";
+            }
+      }
+      elseif($weeks <= 4.3){
+            if($weeks == 1){
+              return "1 w ";
+            }else{
+              return $weeks." ws ";
+            }
+      }
+      elseif($month <= 12){
+            if($month == 1){
+              return "1 m ";
+            }else{
+              return $month." ms ";
+            }
+      }
+      else{
+          if($year == 1){
+            return "1 y ";
+          }else{
+            return $year." ys ";
+          }
+      }
+    }
+
+    public function getUnreadMessage(){
+
+      $userLoggedIn = $_SESSION['byshare_username'];
+      $this->Normal_Query("SELECT viewed FROM message WHERE viewed = ? AND user_from = ? OR user_to = ?",['no', $userLoggedIn, $userLoggedIn]);
+      return $this->Count_Rows();
+     
+
+    }
     
   }
-
+    
 ?>

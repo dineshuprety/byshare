@@ -284,6 +284,36 @@
           }
         break;
         }
+
+        case 'reports_bug':{
+          if(isset($_POST['reports_bug'])){
+
+            $report_bug = strip_tags(trim($_POST['report_details']));
+            // $obj->Create_Session('report_bug',$report_bug);
+            $report_status = 0;
+
+            if(empty($report_bug)){
+              $obj->Create_Session('bug_error','Filed is requried');
+              $report_status = "";
+            }elseif(strlen($report_bug) < 20){
+              $obj->Create_Session('bug_error','Report must be more then 20 characters');
+              $report_status = "";
+            }
+           
+            if(!empty($report_status == 0)){
+
+              // echo'working';
+              // die();
+              if($obj->Normal_Query("INSERT INTO report_bug(report_user, report_details) VALUES (?, ?)",[$this->getUsername(), $report_bug])){
+                $obj->Create_Session("bug_report","Your report is successfully Inserted");
+                      header('location:report.php');
+                      die();
+              }
+            }
+
+          }
+          break;
+        }
         default:{
           exit("unauthorized : 404");
         }
